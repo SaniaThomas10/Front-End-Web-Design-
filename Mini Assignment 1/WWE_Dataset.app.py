@@ -4,7 +4,7 @@ import altair as alt
 import plotly.express as px
 
 
-#Page configuration
+# Page configuration
 st.set_page_config(
     page_title="WWE Match Explorer",
     page_icon="wwe_logo.png",
@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 
-#Page Details 
+# Page Details
 st.markdown(
     """
     <style>
@@ -156,7 +156,7 @@ st.markdown(
 df = pd.read_csv("WWE_History_1000.csv")
 
 
-#Session state for filters and search input
+# Session state for filters and search input
 if "event_filter" not in st.session_state:
     st.session_state.event_filter = "All Events"
 
@@ -175,8 +175,24 @@ if "wrestler_input" not in st.session_state:
 if "submitted_wrestler" not in st.session_state:
     st.session_state.submitted_wrestler = ""
 
+if "reset_filters" not in st.session_state:
+    st.session_state.reset_filters = False
 
-# title 
+
+# Reset filter values before widgets are created
+if st.session_state.reset_filters:
+
+    st.session_state.event_filter = "All Events"
+    st.session_state.title_filter = "All Matches"
+    st.session_state.sort_filter = "Date"
+    st.session_state.ascending = True
+    st.session_state.wrestler_input = ""
+    st.session_state.submitted_wrestler = ""
+
+    st.session_state.reset_filters = False
+
+
+# Title
 logo_col, title_col = st.columns([1, 6])
 
 with logo_col:
@@ -186,7 +202,7 @@ with title_col:
     st.title("WWE Match Explorer")
 
 st.write(
-    "Explore WWE wrestlers match history statistics between 2022 and 2023."
+    "Explore WWE wrestlers match history statistics between 12/31/2022 - 11/4/2023."
 )
 
 
@@ -213,7 +229,7 @@ st.selectbox(
 )
 
 
-# Wrestler search & submit button
+# Wrestler search and submit button
 with st.form("wrestler_search_form"):
 
     st.text_input(
@@ -268,19 +284,13 @@ st.checkbox(
 # Reset filters button
 if st.button("Reset Filters"):
 
-    st.session_state.event_filter = "All Events"
-    st.session_state.title_filter = "All Matches"
-    st.session_state.sort_filter = "Date"
-    st.session_state.ascending = True
-    st.session_state.wrestler_input = ""
-    st.session_state.submitted_wrestler = ""
+    st.session_state.reset_filters = True
 
     st.rerun()
 
 
 # Apply filters to the dataframe
 filtered = df.copy()
-
 
 
 # Event filter state
@@ -339,23 +349,21 @@ if submitted_wrestler:
         )
     )
 
-    # To show matches where the wrestler is either the winner or the loser
+    # Show matches where wrestler is either the winner or loser
     filtered = filtered[
         winner_matches | loser_matches
     ]
 
 
-# Sorting the filtered dataframe based on the selected sort filter and order
+# Sort the filtered dataframe
 filtered = filtered.sort_values(
     by=st.session_state.sort_filter,
     ascending=st.session_state.ascending
 )
 
 
-
-# The statistics based on the filtered data
+# Match statistics
 st.markdown("---")
-
 
 st.markdown(
     '<div class="section-header"> Match Statistics</div>',
@@ -365,8 +373,35 @@ st.markdown(
 
 matches_shown = len(filtered)
 
-unique_winners = filtered["Winner"].nunique()
 
+# Count opponents when a wrestler is searched
+if submitted_wrestler:
+
+    wrestler = submitted_wrestler.lower()
+
+    opponents = []
+
+    for _, row in filtered.iterrows():
+
+        winner = str(row["Winner"])
+        loser = str(row["Loser"])
+
+        if winner.lower() == wrestler:
+
+            opponents.append(loser)
+
+        elif loser.lower() == wrestler:
+
+            opponents.append(winner)
+
+    opponents_shown = len(set(opponents))
+
+else:
+
+    opponents_shown = 0
+
+
+# Count title matches
 title_matches = (
     filtered["Title Match"]
     .astype(str)
@@ -390,8 +425,8 @@ with metric1:
 with metric2:
 
     st.metric(
-        "Unique Winners",
-        unique_winners
+        "Opponents Shown",
+        opponents_shown
     )
 
 
@@ -403,8 +438,7 @@ with metric3:
     )
 
 
-# The anylitics section for the filtered data 
-# with plotly and altair charts
+# WWE Match Analytics
 st.markdown("---")
 
 st.markdown(
@@ -421,8 +455,6 @@ st.subheader(
 
 if not filtered.empty:
 
-    # Create readable match type names
-
     event_chart_data = filtered.copy()
 
     event_chart_data["Match_Type"] = (
@@ -436,7 +468,7 @@ if not filtered.empty:
     )
 
 
-    # Aggregated data
+    # Aggregate data
     event_data = (
         event_chart_data
         .groupby(
@@ -449,7 +481,7 @@ if not filtered.empty:
     )
 
 
-    # Horizontal Altair bar chart 
+    # Horizontal Altair bar chart
     altair_chart = (
         alt.Chart(event_data)
         .mark_bar()
@@ -496,7 +528,7 @@ else:
     )
 
 
-# Plotly chart for Wins vs Losses for a specific wrestler
+# Plotly chart for Wins vs Losses
 st.subheader(
     "Wrestler Wins vs Losses"
 )
@@ -550,13 +582,13 @@ else:
     )
 
 
-    # Based on the Wrestler search, show the wins vs losses of that wrestler on the pie chart
+    # Show wins vs losses for the wrestler
     if len(matching_names) == 1:
 
         wrestler = matching_names[0]
 
 
-        # Count of wins
+        # Count wins
         wins = (
             filtered["Winner"]
             .astype(str)
@@ -568,7 +600,7 @@ else:
         )
 
 
-        # Count of losses
+        # Count losses
         losses = (
             filtered["Loser"]
             .astype(str)
@@ -580,7 +612,7 @@ else:
         )
 
 
-        # chart data
+        # Chart data
         wrestler_data = pd.DataFrame(
             {
                 "Result": [
@@ -622,7 +654,7 @@ else:
         )
 
 
-    # NO WRESTLER FOUND
+    # No wrestler found
     else:
 
         st.info(
@@ -654,8 +686,7 @@ else:
     )
 
 
-# footer caption
+# Footer caption
 st.caption(
     "WWE Match Explorer | Mini Assignment 1"
 )
-

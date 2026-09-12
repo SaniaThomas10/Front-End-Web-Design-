@@ -29,5 +29,5 @@ For the charts, I chose a horizontal Altair bar chart because it makes it easy t
 
 ## Dataset
 
-WWE match history dataset containing 1,000 matches.
+WWE match history dataset containing 1,000 matches, between 12/31/2022 - 11/4/2023
 

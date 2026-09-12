@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
+from pathlib import Path
 
 
 # Page configuration
@@ -152,8 +153,15 @@ st.markdown(
 )
 
 
+# File paths
+BASE_DIR = Path(__file__).parent
+
+CSV_FILE = BASE_DIR / "WWE_History_1000.csv"
+LOGO_FILE = BASE_DIR / "wwe_logo.png"
+
+
 # WWE csv file dataframe
-df = pd.read_csv("WWE_History_1000.csv")
+df = pd.read_csv(CSV_FILE)
 
 
 # Session state for filters and search input
@@ -196,7 +204,7 @@ if st.session_state.reset_filters:
 logo_col, title_col = st.columns([1, 6])
 
 with logo_col:
-    st.image("wwe_logo.png", width=90)
+    st.image(LOGO_FILE, width=90)
 
 with title_col:
     st.title("WWE Match Explorer")
@@ -374,7 +382,7 @@ st.markdown(
 matches_shown = len(filtered)
 
 
-# Count opponents when a wrestler is searched
+# Count unique opponents when a wrestler is searched
 if submitted_wrestler:
 
     wrestler = submitted_wrestler.lower()

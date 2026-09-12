@@ -2,13 +2,13 @@
 
 ## Project Rationale
 
-I chose the WWE match history dataset because I am interested in WWE and wanted to work with a dataset that I would actually enjoy exploring. The dataset contains information about matches, including the event, date, winner, loser, and whether the match was a title match. One question I wanted to explore was whether certain WWE events have more title matches than others. I also wanted to be able to search for a wrestler and see their wins and losses.
+I chose the WWE match history dataset because I love watching WWE and wanted to work with a dataset that I would actually enjoy exploring. The dataset contains information about matches, including the event, date, winner, loser, and whether the match was a title match. I wanted to use the dataset to explore different wrestlers' statistics, such as their wins and losses, and see how their stats compare across different WWE events. I thought it would be interesting to see how different wrestlers perform throughout the events included in the dataset.
 
-One limitation of the dataset is that it does not include much detail about what happened during each match. For example, it does not include match length, how the match ended, or specific championship information. This means the dataset is useful for looking at basic match patterns, but it cannot explain everything about why a match had a certain result.
+One limitation of the dataset is that it only covers a specific time period of WWE history. Because of this, the statistics and trends in the dataset may not represent a wrestler's entire career or WWE history overall. A wrestler could have more wins or losses outside of the time period included in the dataset.
 
-I chose the summary metrics because they help describe the data after filters are applied. **Matches Shown** tells me how many matches fit the current filters, **Unique Winners** shows how many different wrestlers won, and **Title Matches** shows how many filtered matches were title matches.
+I chose the summary metrics because they help describe the data after filters are applied. Matches Shown tells me how many matches fit the current filters, Opponents Shown shows the different wrestlers who are part of the matches being displayed, and Title Matches shows how many of the filtered matches were title matches.
 
-For the charts, I chose a **horizontal Altair bar chart** because it makes it easy to compare title and non-title matches across different WWE events. I chose a **Plotly pie chart** for wrestler wins and losses because it clearly shows the proportion of a wrestler's wins compared to their losses.
+For the charts, I chose a horizontal Altair bar chart because it makes it easy to compare title and non-title matches across different WWE events, compared to the vertical bar chart. I chose a Plotly pie chart for wrestler wins and losses because it gives a simple visual representation of a wrestler's match results.
 
 ## Features
 
@@ -17,7 +17,7 @@ For the charts, I chose a **horizontal Altair bar chart** because it makes it ea
 - Title match filtering
 - Sorting
 - Match statistics
-- Interactive charts
+- Charts
 
 ## Technologies Used
 
@@ -31,7 +31,3 @@ For the charts, I chose a **horizontal Altair bar chart** because it makes it ea
 
 WWE match history dataset containing 1,000 matches.
 
-## How to Run
-
-```bash
-streamlit run app1.py

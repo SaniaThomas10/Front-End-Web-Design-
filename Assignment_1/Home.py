@@ -1,12 +1,23 @@
+from pathlib import Path
+
 import streamlit as st
 
 from utils.data import load_data, format_number, apply_style
 
 
 # Page configuration
+
+project_folder = Path(__file__).resolve().parent
+
+spotify_logo = (
+    project_folder
+    / "images"
+    / "spotify_logo.png"
+)
+
 st.set_page_config(
     page_title="Spotify 2025 Explorer",
-    page_icon="images/spotify_logo.png",
+    page_icon=spotify_logo,
     layout="wide"
 )
 
@@ -36,7 +47,7 @@ logo_column, title_column = st.columns(
 with logo_column:
 
     st.image(
-        "images/spotify_logo.png",
+        spotify_logo,
         width=70
     )
 
@@ -323,7 +334,3 @@ with st.expander(
         https://www.kaggle.com/datasets/kylefengkfeng209/most-streamed-spotify-songs-2025/data
         """
     )
-
-
-
-

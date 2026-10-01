@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import streamlit as st
 
@@ -9,8 +11,16 @@ import streamlit as st
 def load_data():
 
     # Read the Spotify CSV file.
+    project_folder = Path(__file__).resolve().parent.parent
+
+    csv_file = (
+        project_folder
+        / "data"
+        / "most_streamed_spotify_2025.csv"
+    )
+
     df = pd.read_csv(
-        "data/most_streamed_spotify_2025.csv"
+        csv_file
     )
 
     return df

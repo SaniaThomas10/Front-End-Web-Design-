@@ -4,10 +4,7 @@ import plotly.express as px
 from utils.data import load_data, format_number, apply_style
 
 
-# ---------------------------------------------------------
 # Page configuration
-# ---------------------------------------------------------
-
 st.set_page_config(
     page_title="Spotify Trends",
     page_icon="images/spotify_logo.png",
@@ -15,24 +12,17 @@ st.set_page_config(
 )
 
 
-# ---------------------------------------------------------
 # Website styling
-# ---------------------------------------------------------
-
 apply_style()
 
 
-# ---------------------------------------------------------
-# Load data
-# ---------------------------------------------------------
 
+# Load data
 df = load_data()
 
 
-# ---------------------------------------------------------
-# Header
-# ---------------------------------------------------------
 
+# Header
 logo_column, title_column = st.columns(
     [1, 10],
     vertical_alignment="center"
@@ -61,10 +51,7 @@ st.write(
 st.divider()
 
 
-# ---------------------------------------------------------
 # Tabs
-# ---------------------------------------------------------
-
 artist_tab, daily_tab, collaboration_tab = st.tabs(
     [
         ":green[Artist Performance]",
@@ -74,10 +61,7 @@ artist_tab, daily_tab, collaboration_tab = st.tabs(
 )
 
 
-# =========================================================
-# ARTIST PERFORMANCE
-# =========================================================
-
+# Artist Performance 
 with artist_tab:
 
     st.header(
@@ -85,10 +69,7 @@ with artist_tab:
     )
 
 
-    # -----------------------------------------------------
     # Group songs by artist
-    # -----------------------------------------------------
-
     artist_summary = (
         df.groupby("artist")[
             "spotify_streams_total"
@@ -108,10 +89,9 @@ with artist_tab:
     # Keep the top 10 artists.
     top_artists = artist_summary.head(10)
 
-
-    # -----------------------------------------------------
+    
     # Artist chart
-    # -----------------------------------------------------
+  
 
     chart = px.bar(
         top_artists,
@@ -146,10 +126,7 @@ with artist_tab:
     )
 
 
-    # -----------------------------------------------------
     # Artist table
-    # -----------------------------------------------------
-
     artist_display = top_artists.rename(
         columns={
             "artist": "Artist",
@@ -169,10 +146,7 @@ with artist_tab:
     )
 
 
-# =========================================================
-# DAILY STREAMING
-# =========================================================
-
+# Daily Streaming
 with daily_tab:
 
     st.header(
@@ -180,20 +154,14 @@ with daily_tab:
     )
 
 
-    # -----------------------------------------------------
     # Find top songs by daily streams
-    # -----------------------------------------------------
-
     daily_songs = df.sort_values(
         "daily_streams",
         ascending=False
     ).head(10)
 
 
-    # -----------------------------------------------------
     # Daily streaming chart
-    # -----------------------------------------------------
-
     chart = px.bar(
         daily_songs,
         x="track",
@@ -229,10 +197,7 @@ with daily_tab:
     )
 
 
-    # -----------------------------------------------------
     # Daily stream summary metric
-    # -----------------------------------------------------
-
     top_daily_average = daily_songs[
         "daily_streams"
     ].mean()
@@ -246,10 +211,7 @@ with daily_tab:
     )
 
 
-# =========================================================
-# COLLABORATIONS
-# =========================================================
-
+#Collaborations
 with collaboration_tab:
 
     st.header(
@@ -257,10 +219,7 @@ with collaboration_tab:
     )
 
 
-    # -----------------------------------------------------
     # Count collaborations
-    # -----------------------------------------------------
-
     collaboration_summary = (
         df["is_collaboration"]
         .value_counts()
@@ -287,10 +246,7 @@ with collaboration_tab:
     )
 
 
-    # -----------------------------------------------------
     # Collaboration pie chart
-    # -----------------------------------------------------
-
     chart = px.pie(
         collaboration_summary,
         names="Collaboration",
@@ -324,10 +280,7 @@ with collaboration_tab:
     )
 
 
-    # -----------------------------------------------------
     # Collaboration table
-    # -----------------------------------------------------
-
     collaboration_display = collaboration_summary[
         [
             "Collaboration",

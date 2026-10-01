@@ -278,10 +278,7 @@ if results is not None:
     )
 
 
-# ---------------------------------------------------------
-# API explanation
-# ---------------------------------------------------------
-
+# API Summury  
 with st.expander(
     "iTunes Search API"
 ):

@@ -1,12 +1,23 @@
+from pathlib import Path
+
 import streamlit as st
 
 from utils.data import load_data, format_number, apply_style
 
 
+project_folder = Path(__file__).resolve().parent.parent
+
+spotify_logo = (
+    project_folder
+    / "images"
+    / "spotify_logo.png"
+)
+
+
 # Page configuration
 st.set_page_config(
     page_title="Explore Songs",
-    page_icon="images/spotify_logo.png",
+    page_icon=spotify_logo,
     layout="wide"
 )
 
@@ -35,7 +46,7 @@ logo_column, title_column = st.columns(
 with logo_column:
 
     st.image(
-        "images/spotify_logo.png",
+        spotify_logo,
         width=70
     )
 
@@ -429,11 +440,7 @@ st.caption(
 )
 
 
-
-# ---------------------------------------------------------
 # Table key
-# ---------------------------------------------------------
-
 with st.expander(
     "Table Key"
 ):

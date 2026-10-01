@@ -1,0 +1,16 @@
+[theme]
+
+# Spotify green
+primaryColor = "#1DB954"
+
+# Dark grey main background
+backgroundColor = "#242424"
+
+# Slightly lighter background for widgets
+secondaryBackgroundColor = "#333333"
+
+# White text
+textColor = "#FFFFFF"
+
+# Use Streamlit's sans-serif font
+font = "sans-serif"

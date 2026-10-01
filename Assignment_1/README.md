@@ -8,9 +8,7 @@ The application makes a large music streaming dataset easier to understand by al
 
 ## The Problem
 
-Music listeners can easily see which songs are popular, but it can be harder to understand how artists and songs compare across a large streaming dataset.
-
-Spotify 2025 Explorer helps music listeners explore the most-streamed songs of 2025 by making the data easier to filter, compare, and understand.
+Spotify has millions of songs and artists, which can make it difficult for listeners to see what is trending and compare how different songs and artists are performing. Spotify 2025 Explorer organizes streaming data in a simple and interactive way, allowing users to explore popular songs, compare artists, view streaming trends, and discover more music from artists they enjoy.
 
 ---
 

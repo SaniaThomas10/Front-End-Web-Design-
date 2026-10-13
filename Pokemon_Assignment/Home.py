@@ -5,7 +5,7 @@ from PIL import Image
 
 
 #page configuration
-charzard_image = Image.open("images/Pokémon_Charizard_art.png") #Logo picture 
+charzard_image = Image.open("Pokemon_Assignment/images/Pokémon_Charizard_art.png") #Logo picture 
 
 st.set_page_config(page_title="Pokemon Database", page_icon=charzard_image, layout="wide")
 

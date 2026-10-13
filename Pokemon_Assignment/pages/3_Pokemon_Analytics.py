@@ -17,7 +17,7 @@ st.set_page_config(
 #cache the CSV 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/pokemon_data.csv")
+    df = pd.read_csv("Pokemon_Assignment/data/pokemon_data.csv")
     return df
 
 df = load_data()

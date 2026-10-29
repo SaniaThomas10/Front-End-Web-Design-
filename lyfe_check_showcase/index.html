@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYFE CHECK | Project Showcase</title>
+
+    <!-- Connect CSS and JavaScript -->
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Website header -->
+    <header>
+        <h1>LYFE CHECK | Thesis Project Showcase</h1>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#development">Development</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+
+        <button type="button" id="theme-toggle">
+            Dark Mode
+        </button>
+    </header>
+
+    <!-- Main content -->
+    <main>
+
+        <!-- Project overview -->
+        <section id="overview">
+            <h2>Project Overview</h2>
+
+            <h3>What is LYFE CHECK?</h3>
+            <p>
+                LYFE CHECK is my Computer Science thesis project, where I'm working to bring personal wellness and productivity together
+                in one application. I wanted to create something that could help people stay organized while also making time for their
+                well-being. With features like task management, mood tracking, habit tracking, and journaling, my goal is to make it
+                easier for users to manage their daily responsibilities, build healthy routines, and reflect on their personal growth.
+            </p>
+
+            <h3>Why I Created LYFE CHECK</h3>
+            <p>
+                Staying productive while maintaining personal well-being can be challenging,
+                especially for students and individuals balancing school, work,
+                personal responsibilities, and everyday life. LYFE CHECK is made for 
+                people who want to stay organized, build healthier habits, 
+                and make time for self-reflection. By combining productivity and wellness 
+                tools into one accessible platform, LYFE CHECK aims to make managing daily 
+                life simpler and more convenient.
+            </p>
+        </section>
+
+        <!-- Feature explorer -->
+        <section id="features">
+            <h2>Feature Explorer</h2>
+
+            <p>
+                Explore the different features of LYFE CHECK
+                and how they support wellness and productivity.
+            </p>
+
+            <div class="filter-group">
+                <div>
+                    <label for="feature-search">Search Features:</label>
+                    <input
+                        type="search"
+                        id="feature-search"
+                        placeholder="Search for a feature..."
+                    >
+                </div>
+
+                <div>
+                    <label for="feature-category">Filter by Category:</label>
+                    <select id="feature-category">
+                        <option value="All">All Categories</option>
+                        <option value="Productivity">Productivity</option>
+                        <option value="Wellness">Wellness</option>
+                        <option value="Insights">Insights</option>
+                        <option value="Planned">Planned</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="feature-count" aria-live="polite">Showing 0 of 8</p>
+
+            <div id="feature-list"></div>
+        </section>
+
+        <!-- Development journey -->
+        <section id="development">
+            <h2>Development Journey</h2>
+
+            <p>
+                LYFE CHECK has gone through several stages of development, beginning as a desktop application for my Object-Oriented
+                Programming (OOP) class project and gradually evolving into a web application for my Computer Science thesis. As I
+                continued working on the project, I wanted to turn it into something I would personally enjoy using in my everyday life.
+                This motivated me to improve the design, expand its features, and create a platform that is both practical and
+                user-friendly, not just for myself but for other people like me who may benefit from it as well.
+            </p>
+
+            <h3>Java and JavaFX</h3>
+            <p>
+                LYFE CHECK originally began as a desktop application developed using Java and JavaFX for my Object-Oriented Programming
+                (OOP) class. The main focus of this version was to apply object-oriented programming principles and design patterns
+                while building a functional application. This project gave me the foundation for LYFE CHECK and inspired me to continue
+                developing it for my thesis project.
+            </p>
+
+            <h3>Paper & Figma Prototypes</h3>
+            <p>
+                I began the design process by creating a paper prototype of 
+                LYFE CHECK to sketch out the layout, organize features, and plan
+                how users would navigate the application. Once I had a clear idea of
+                the design, I used Figma to turn my paper prototype into an interactive
+                digital prototype. This allowed me to further develop the user interface 
+                and visualize how the different features would work together. 
+                The digital prototype includes a home dashboard, calendar, to-do list, 
+                journal, profile page, and a concept for a future AI assistant.
+            </p>
+
+            <h3>React, TypeScript, and Cloud Based Backend</h3>
+            <p>
+                LYFE CHECK is now being developed as a web application using React, TypeScript, and a cloud-based backend for my
+                Computer Science thesis. I wanted to move away from the original desktop version and create something that people could
+                easily access from different devices. React and TypeScript allow me to build a more interactive application while
+                keeping my code organized as I add new features. The cloud backend will also allow users to securely store their
+                information, log into their accounts, and access their data across devices. My goal is to bring all of these
+                technologies together to turn LYFE CHECK into a fully functional application that people can use in their everyday
+                lives.
+            </p>
+
+            <h3>Future Development</h3>
+            <p>
+                One of the features I plan to introduce to LYFE CHECK is an AI assistant designed specifically for wellness and
+                journaling. My goal is to create an assistant that can provide personalized suggestions, encourage self-reflection, and
+                generate journaling prompts based on users' needs. I also want to ensure that the AI stays focused on the purpose of
+                LYFE CHECK by limiting its responses to topics related to wellness, productivity, and personal growth.
+            </p>
+        </section>
+
+        <!-- Figma prototype gallery -->
+        <section id="gallery">
+            <h2>Prototype Gallery</h2>
+
+            <p>
+                These screenshots are from my LYFE CHECK Figma prototype.
+                They show the different pages and features I designed
+                for the application.
+            </p>
+
+            <div class="gallery-grid">
+
+                <article class="gallery-item">
+                    <h3>Home Dashboard</h3>
+                    <img
+                        src="./images/LC-Home.png"
+                        alt="LYFE CHECK home dashboard with planning and wellness tools"
+                        loading="lazy"
+                    >
+                    <p>
+                        An overview of daily tasks, calendar,
+                        journal, and mood tracking.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <h3>Calendar</h3>
+                    <img
+                        src="./images/LC-Calendar.png"
+                        alt="LYFE CHECK calendar prototype"
+                        loading="lazy"
+                    >
+                    <p>
+                        Organize schedules and keep track
+                        of upcoming events.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <h3>To-Do List</h3>
+                    <img
+                        src="./images/LC-ToDo.png"
+                        alt="LYFE CHECK task management prototype"
+                        loading="lazy"
+                    >
+                    <p>
+                        Organize tasks and track daily productivity.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <h3>Journal</h3>
+                    <img
+                        src="./images/LC-Journal.png"
+                        alt="LYFE CHECK journaling interface prototype"
+                        loading="lazy"
+                    >
+                    <p>
+                        Reflect on experiences and record journal entries.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <h3>Profile and Analytics</h3>
+                    <img
+                        src="./images/LC-Profile.png"
+                        alt="LYFE CHECK profile and analytics prototype"
+                        loading="lazy"
+                    >
+                    <p>
+                        View personal statistics and progress over time.
+                    </p>
+                </article>
+
+                <article class="gallery-item">
+                    <h3>AI Assistant</h3>
+                    <img
+                        src="./images/LC-AI.png"
+                        alt="LYFE CHECK planned AI assistant chat interface"
+                        loading="lazy"
+                    >
+                    <p>
+                        A planned feature for journaling suggestions
+                        and wellness-related guidance.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Interactive quiz -->
+        <section id="quiz">
+            <h2>What's something you struggle with?</h2>
+
+            <p>
+                Everyone faces different challenges when balancing
+                productivity and personal wellness. Select the
+                option that best describes something that you usually struggle with to
+                see how LYFE CHECK could help.
+            </p>
+
+            <form id="quiz-form">
+                <fieldset>
+                    <legend>Select one option:</legend>
+
+                    <div class="quiz-option">
+                        <input
+                            type="radio"
+                            id="hectic-schedule"
+                            name="struggle"
+                            value="schedule"
+                        >
+                        <label for="hectic-schedule">Hectic schedule</label>
+                    </div>
+
+                    <div class="quiz-option">
+                        <input
+                            type="radio"
+                            id="no-time-journal"
+                            name="struggle"
+                            value="journal-time"
+                        >
+                        <label for="no-time-journal">No time to journal</label>
+                    </div>
+
+                    <div class="quiz-option">
+                        <input
+                            type="radio"
+                            id="productivity"
+                            name="struggle"
+                            value="productivity"
+                        >
+                        <label for="productivity">
+                            Struggling with being productive
+                        </label>
+                    </div>
+
+                    <div class="quiz-option">
+                        <input
+                            type="radio"
+                            id="journal-inspiration"
+                            name="struggle"
+                            value="inspiration"
+                        >
+                        <label for="journal-inspiration">
+                            No inspiration when journaling
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit">
+                    See How LYFE CHECK Can Help
+                </button>
+            </form>
+
+            <p id="quiz-error" role="alert"></p>
+            <div id="quiz-result" aria-live="polite"></div>
+        </section>
+
+    </main>
+
+    <!-- Website footer -->
+    <footer>
+        <p>LYFE CHECK | Computer Science Thesis Project</p>
+        <p>Sania Thomas - Project Showcase</p>
+    </footer>
+
+</body>
+</html>
